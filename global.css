@@ -1,3 +1,4 @@
+
 body {
   font: 100%/1.5 system-ui, sans-serif;
   display: flex;
@@ -61,3 +62,51 @@ header label {
 #time-slider {
   width: 500px;
 }
+/* Shared color logic for circles and legend entries */
+#map circle,
+.legend > div {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  fill: var(--color);
+  background-color: var(--color);
+  color: white;
+
+}
+
+
+/* Flex layout for legend */
+.legend {
+  display: flex;
+  margin-block: 1em;
+  padding: 0.5em;
+  gap: 1px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.legend > div {
+  flex: 1;
+  padding: 0.5em;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+}
+.legend > div:nth-child(1) {
+  text-align: left;
+}
+
+.legend > div:nth-child(2) {
+  text-align: center;
+}
+
+.legend > div:nth-child(3) {
+  text-align: right;
+}
+
+
+
+
